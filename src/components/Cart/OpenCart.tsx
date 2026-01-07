@@ -13,18 +13,15 @@ export function OpenCartButton({
 }) {
   return (
     <Button
-      variant="nav"
+      variant="ghost"
       size="clear"
-      className="navLink relative items-end hover:cursor-pointer"
+      className={clsx("relative flex items-center gap-2 hover:bg-transparent hover:text-gray-600 transition-colors p-2", className)}
       {...rest}
     >
-      <span>Cart</span>
+      <ShoppingCart className="w-6 h-6" />
 
       {quantity ? (
-        <>
-          <span>•</span>
-          <span>{quantity}</span>
-        </>
+        <span className="text-sm font-medium">{quantity}</span>
       ) : null}
     </Button>
   )

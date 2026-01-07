@@ -48,6 +48,8 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        'light-grey': 'var(--light-grey)',
+        'paragraph': 'var(--paragraph-color)',
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
@@ -88,13 +90,18 @@ export default {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            '--tw-prose-body': 'var(--text)',
-            '--tw-prose-headings': 'var(--text)',
+            '--tw-prose-body': 'var(--paragraph-color)',
+            '--tw-prose-headings': 'var(--foreground)',
             h1: {
+              fontFamily: 'var(--font-dm-sans)',
               fontSize: '4rem',
               fontWeight: 'normal',
               marginBottom: '0.25em',
             },
+            h2: { fontFamily: 'var(--font-dm-sans)' },
+            h3: { fontFamily: 'var(--font-dm-sans)' },
+            h4: { fontFamily: 'var(--font-dm-sans)' },
+            body: { fontFamily: 'var(--font-outfit)' },
             a: {
               color: 'inherit',
             },
@@ -103,7 +110,8 @@ export default {
       }),
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['var(--font-outfit)'],
+        heading: ['var(--font-dm-sans)'],
       },
       keyframes: {
         fadeIn: {

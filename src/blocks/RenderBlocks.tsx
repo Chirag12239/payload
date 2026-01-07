@@ -6,6 +6,11 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { ThreeItemGridBlock } from '@/blocks/ThreeItemGrid/Component'
+import { TwoimageSectionBlock } from '@/blocks/TwoimageSection/Component'
+import { BannerDeviderBlock } from '@/blocks/BannerDevider/Component'
+import { SectionBlock } from '@/blocks/Section/Component'
+import { ContainerBlock } from '@/blocks/Container/Component'
+import { SeparatorBlock } from '@/blocks/Separator/Component'
 import { toKebabCase } from '@/utilities/toKebabCase'
 import React, { Fragment } from 'react'
 
@@ -20,6 +25,11 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   threeItemGrid: ThreeItemGridBlock,
+  twoimageSection: TwoimageSectionBlock,
+  bannerDevider: BannerDeviderBlock,
+  section: SectionBlock,
+  container: ContainerBlock,
+  separator: SeparatorBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -40,7 +50,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div className="" key={index}>
                   {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                   {/* @ts-ignore - weird type mismatch here */}
                   <Block id={toKebabCase(blockName!)} {...block} />

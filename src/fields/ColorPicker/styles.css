@@ -1,0 +1,39 @@
+.color-picker-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 13px; /* Approximate Payload label size */
+  text-transform: uppercase;
+  color: #999; /* Approximate Payload label color */
+}
+
+.color-picker-input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.color-picker-swatch {
+  width: 50px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+.color-picker-text {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e1e1e1; /* Default Payload border colorish */
+  border-radius: 4px;
+  font-family: monospace;
+}

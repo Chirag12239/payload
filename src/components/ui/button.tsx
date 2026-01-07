@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 ',
+        default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
         destructive:
           'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
         outline:
@@ -19,6 +19,25 @@ const buttonVariants = cva(
           'text-primary/50 hover:text-primary/100 [&.active]:text-primary/100 py-2 px-4 uppercase font-mono tracking-[0.1em] text-xs',
         link: 'text-primary underline-offset-4 hover:underline',
         nav: 'text-primary/50 hover:text-primary/100 [&.active]:text-primary/100 p-0 pt-2 pb-6 uppercase font-mono tracking-[0.1em] text-xs',
+        
+        // Custom Variants from Havinic
+        'explore-black': 
+          'bg-[var(--black)] text-[var(--white)] rounded-[8px] flex justify-center items-center gap-[9px] transition-all duration-600 ease-in-out ' +
+          'px-[18px] md:px-[20px] lg:px-[24px] py-[12px] lg:py-[14px] hover:opacity-90',
+          
+        'explore': 
+          'bg-[var(--light-grey)] text-[var(--paragraph-color)] rounded-[8px] flex justify-center items-center gap-[9px] transition-all duration-600 ease-in-out ' +
+          'px-[18px] md:px-[20px] lg:px-[24px] py-[12px] lg:py-[14px] hover:bg-gray-200',
+
+        'link-primary': 
+          'bg-transparent border-b border-black text-black w-full max-w-[148px] justify-center pb-[5px] rounded-none px-0 py-0 h-auto hover:opacity-70',
+
+        'blog':
+          'bg-[var(--light-grey)] rounded-[20px] min-h-[50px] md:min-h-[80px] lg:min-h-[120px] justify-center items-center',
+          
+        'footer': 
+          'bg-[var(--white)] text-black rounded-[5px] gap-[6px] flex justify-center items-center ' +
+          'px-[18px] py-[12px] lg:px-[24px] lg:py-[10px] max-w-none md:max-w-[155px] lg:max-w-none hover:bg-gray-100',
       },
       size: {
         clear: '',

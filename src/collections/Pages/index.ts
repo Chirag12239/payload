@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload'
 import { Banner } from '@/blocks/Banner/config'
 import { Carousel } from '@/blocks/Carousel/config'
 import { ThreeItemGrid } from '@/blocks/ThreeItemGrid/config'
+import { TwoimageSection } from '@/blocks/TwoimageSection/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { adminOnly } from '@/access/adminOnly'
 import { Archive } from '@/blocks/ArchiveBlock/config'
@@ -10,6 +11,10 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { BannerDevider } from '@/blocks/BannerDevider/config'
+import { Section } from '@/blocks/Section/config'
+import { Container } from '@/blocks/Container/config'
+import { Separator } from '@/blocks/Separator/config'
 import { hero } from '@/fields/hero'
 import { slugField } from 'payload'
 import { adminOrPublishedStatus } from '@/access/adminOrPublishedStatus'
@@ -96,6 +101,11 @@ export const Pages: CollectionConfig = {
                 ThreeItemGrid,
                 Banner,
                 FormBlock,
+                TwoimageSection,
+                BannerDevider,
+                Section,
+                Container,
+                Separator,
               ],
               required: true,
             },

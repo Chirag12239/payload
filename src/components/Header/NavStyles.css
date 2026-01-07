@@ -1,0 +1,14 @@
+.body {
+  font-family: "DM Sans";
+  color: var(--paragraph-color);
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+.navbar-section {
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  margin-top: 0px;
+}
