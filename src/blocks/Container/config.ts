@@ -10,6 +10,9 @@ import { MediaBlock } from '../MediaBlock/config'
 import { ThreeItemGrid } from '../ThreeItemGrid/config'
 import { TwoimageSection } from '../TwoimageSection/config'
 import { Separator } from '../Separator/config'
+import { AboutUsWithImage } from '../AboutUsWithImage/config'
+import { BestService } from '../BestService/config'
+
 import { colorPickerField } from '@/fields/ColorPicker/config'
 
 export const Container: Block = {
@@ -104,6 +107,9 @@ export const Container: Block = {
         ThreeItemGrid,
         TwoimageSection,
         Separator,
+        AboutUsWithImage,
+        BestService,
+
         // Container // Self-reference might need careful handling, omitting for now to be safe.
       ],
     },

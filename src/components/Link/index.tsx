@@ -5,7 +5,7 @@ import { cn } from '@/utilities/cn'
 import Link from 'next/link'
 import React from 'react'
 
-type CMSLinkType = {
+export type CMSLinkProps = {
   appearance?: 'inline' | ButtonProps['variant']
   children?: React.ReactNode
   className?: string
@@ -20,7 +20,7 @@ type CMSLinkType = {
   url?: string | null
 }
 
-export const CMSLink: React.FC<CMSLinkType> = (props) => {
+export const CMSLink: React.FC<CMSLinkProps> = (props) => {
   const {
     type,
     appearance = 'inline',

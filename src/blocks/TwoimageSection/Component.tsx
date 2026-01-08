@@ -50,7 +50,7 @@ export const TwoimageSectionBlock: React.FC<
               
               {leftContent?.enableButton && leftContent.buttonText && (
                  <div className="hidden md:block">
-                   <Button asChild variant="explore-black">
+                   <Button asChild variant="primaryUnderline">
                      <Link href={leftContent.buttonLink || '#'}>
                        {leftContent.buttonText}
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ export const TwoimageSectionBlock: React.FC<
                         </svg>
                      </Link>
                    </Button>
-                 </div>
+                 </div> 
               )}
             </div>
           </div>

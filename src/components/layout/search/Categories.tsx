@@ -6,6 +6,8 @@ import React, { Suspense } from 'react'
 import { FilterList } from './filter'
 import { CategoryItem } from './Categories.client'
 
+import { CategoriesAccordion } from './CategoriesAccordion'
+
 async function CategoryList() {
   const payload = await getPayload({ config: configPromise })
 
@@ -15,13 +17,17 @@ async function CategoryList() {
   })
 
   return (
-    <div>
-      <h3 className="text-xs mb-2 text-neutral-500 dark:text-neutral-400">Category</h3>
+    <div className="mt-10">
+      {/* Mobile View: Accordion */}
+      <div className="block md:hidden">
+        <CategoriesAccordion categories={categories.docs} />
+      </div>
 
-      <ul>
+      {/* Desktop View: Grid */}
+      <ul className="hidden md:grid md:grid-cols-4 lg:grid-cols-9 xl:grid-cols-9 gap-4">
         {categories.docs.map((category) => {
           return (
-            <li key={category.id}>
+            <li key={category.id} className="w-full">
               <CategoryItem category={category} />
             </li>
           )

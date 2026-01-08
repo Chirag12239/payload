@@ -11,6 +11,9 @@ import { ThreeItemGrid } from '../ThreeItemGrid/config'
 import { TwoimageSection } from '../TwoimageSection/config'
 import { Separator } from '../Separator/config'
 import { Container } from '../Container/config'
+import { AboutUsWithImage } from '../AboutUsWithImage/config'
+import { BestService } from '../BestService/config'
+
 import { colorPickerField } from '@/fields/ColorPicker/config'
 
 export const Section: Block = {
@@ -54,6 +57,9 @@ export const Section: Block = {
         MediaBlock,
         ThreeItemGrid,
         TwoimageSection,
+        AboutUsWithImage,
+        BestService,
+
       ],
     },
   ],

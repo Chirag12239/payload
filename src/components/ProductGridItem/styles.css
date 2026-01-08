@@ -1,0 +1,56 @@
+
+/* Shop Overlay Styles */
+.body {
+  font-family: "DM Sans";
+  color: var(--paragraph-color);
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+.shop-overlay-box {
+  position: absolute;
+  inset: 0%;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: flex; /* Default display */
+}
+
+/* Logic extracted from media queries to be mobile-first or specific */
+
+@media screen and (max-width: 991px) {
+  .shop-overlay-box {
+    display: flex;
+  }
+  .shop-overlay-box.mobile-hide {
+    justify-content: center;
+    align-items: flex-end;
+    background-color: var(--transparent);
+    backdrop-filter: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .shop-overlay-box {
+    background-color: var(--transparent);
+    text-decoration: none;
+  }
+  .shop-overlay-box.mobile-hide {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .shop-overlay-box.mobile-hide {
+     display: flex;
+     backdrop-filter: none;
+  }
+}

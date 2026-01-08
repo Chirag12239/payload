@@ -15,6 +15,10 @@ import { BannerDevider } from '@/blocks/BannerDevider/config'
 import { Section } from '@/blocks/Section/config'
 import { Container } from '@/blocks/Container/config'
 import { Separator } from '@/blocks/Separator/config'
+import { AboutUsDetails } from '@/blocks/AboutUsDetails/config'
+import { AboutUsWithImage } from '@/blocks/AboutUsWithImage/config'
+import { BestService } from '@/blocks/BestService/config'
+
 import { hero } from '@/fields/hero'
 import { slugField } from 'payload'
 import { adminOrPublishedStatus } from '@/access/adminOrPublishedStatus'
@@ -106,6 +110,10 @@ export const Pages: CollectionConfig = {
                 Section,
                 Container,
                 Separator,
+                AboutUsDetails,
+                AboutUsWithImage,
+                BestService,
+
               ],
               required: true,
             },

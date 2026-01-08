@@ -25,6 +25,17 @@ export const BannerDevider: Block = {
       required: true,
       label: 'Name / Heading Text',
     },
+
+    {
+      name: 'buttonText',
+      type: 'text',
+      label: 'Button Label',
+      defaultValue: 'New Arrival',
+      admin: {
+        condition: (_, siblingData) => siblingData.variant === 'discover',
+      },
+    },
+
   ],
   interfaceName: 'BannerDeviderBlock',
 }

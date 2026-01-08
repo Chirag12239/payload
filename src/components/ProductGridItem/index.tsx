@@ -5,6 +5,8 @@ import React from 'react'
 import clsx from 'clsx'
 import { Media } from '@/components/Media'
 import { Price } from '@/components/Price'
+import { ProductPriceDetails } from '@/components/ProductPriceDetails'
+import './styles.css'
 
 type Props = {
   product: Partial<Product>
@@ -32,12 +34,21 @@ export const ProductGridItem: React.FC<Props> = ({ product }) => {
   const image =
     gallery?.[0]?.image && typeof gallery[0]?.image !== 'string' ? gallery[0]?.image : false
 
+  const category = product.categories?.[0]
+  const categoryTitle =
+    category && typeof category === 'object' && 'title' in category ? category.title : null
+
   return (
     <Link className="relative inline-block h-full w-full group" href={`/products/${product.slug}`}>
+      {categoryTitle && (
+        <div className="absolute top-0 left-1/2 z-20 -translate-x-1/2 rounded-b-xl bg-white px-6 py-2 text-sm font-medium shadow-sm">
+          {categoryTitle}
+        </div>
+      )}
       {image ? (
         <Media
           className={clsx(
-            'relative aspect-square object-cover border rounded-2xl p-8 bg-primary-foreground',
+            'relative aspect-square object-cover border rounded-2xl p-16 bg-[#d7d7d7]',
           )}
           height={80}
           imgClassName={clsx('h-full w-full object-cover rounded-2xl', {
@@ -48,14 +59,13 @@ export const ProductGridItem: React.FC<Props> = ({ product }) => {
         />
       ) : null}
 
-      <div className="font-mono text-primary/50 group-hover:text-primary/100 flex justify-between items-center mt-4">
-        <div>{title}</div>
-
-        {typeof price === 'number' && (
-          <div className="">
-            <Price amount={price} />
-          </div>
-        )}
+      <div className="shop-overlay-box mobile-hide shop-page-box opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 rounded-2xl">
+        <div className="transform translate-y-5 group-hover:translate-y-0 transition-transform duration-300 w-full px-4 pb-4">
+          <ProductPriceDetails
+            title={title || ''}
+            price={typeof price === 'number' ? <Price amount={price} /> : null}
+          />
+        </div>
       </div>
     </Link>
   )

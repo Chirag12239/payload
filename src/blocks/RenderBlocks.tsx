@@ -11,6 +11,11 @@ import { BannerDeviderBlock } from '@/blocks/BannerDevider/Component'
 import { SectionBlock } from '@/blocks/Section/Component'
 import { ContainerBlock } from '@/blocks/Container/Component'
 import { SeparatorBlock } from '@/blocks/Separator/Component'
+import { AboutUsDetailsBlock } from '@/blocks/AboutUsDetails/Component'
+import { AboutUsWithImageBlock } from '@/blocks/AboutUsWithImage/Component'
+import { ServiceDetailsBlock } from '@/blocks/ServiceDetails/Component'
+import { BestServiceBlock } from '@/blocks/BestService/Component'
+
 import { toKebabCase } from '@/utilities/toKebabCase'
 import React, { Fragment } from 'react'
 
@@ -30,6 +35,11 @@ const blockComponents = {
   section: SectionBlock,
   container: ContainerBlock,
   separator: SeparatorBlock,
+  aboutUsDetails: AboutUsDetailsBlock,
+  aboutUsWithImage: AboutUsWithImageBlock,
+  serviceDetails: ServiceDetailsBlock,
+  bestService: BestServiceBlock,
+
 }
 
 export const RenderBlocks: React.FC<{
