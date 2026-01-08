@@ -1,7 +1,8 @@
-import { Block } from 'payload'
+import type { Block } from 'payload'
 
-export const AboutUsDetails: Block = {
-  slug: 'aboutUsDetails',
+export const AboutUsProductGrid: Block = {
+  slug: 'aboutUsProductGrid',
+  interfaceName: 'AboutUsProductGridBlock',
   fields: [
     {
       name: 'title',
@@ -17,5 +18,16 @@ export const AboutUsDetails: Block = {
       defaultValue: 'Discover thoughtfully crafted furniture and decor pieces made to elevate your living spaces with lasting style and comfort.',
       label: 'Description',
     },
+    {
+      name: 'products',
+      type: 'relationship',
+      relationTo: 'products',
+      hasMany: true,
+      label: 'Products to show',
+    },
   ],
+  labels: {
+    plural: 'About Us Product Grids',
+    singular: 'About Us Product Grid',
+  },
 }

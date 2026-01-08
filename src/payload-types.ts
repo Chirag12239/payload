@@ -76,6 +76,7 @@ export interface Config {
     pages: Page;
     categories: Category;
     media: Media;
+    blogs: Blog;
     forms: Form;
     'form-submissions': FormSubmission;
     addresses: Address;
@@ -109,6 +110,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    blogs: BlogsSelect<false> | BlogsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     addresses: AddressesSelect<false> | AddressesSelect<true>;
@@ -490,16 +492,6 @@ export interface Page {
     | {
         title: string;
         description: string;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-        };
         id?: string | null;
         blockName?: string | null;
         blockType: 'aboutUsDetails';
@@ -531,6 +523,8 @@ export interface Page {
       }
     | CategoryGridBlock
     | ProductGridBlock
+    | AboutUsProductGridBlock
+    | BlogGridBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1005,6 +999,8 @@ export interface SectionBlock {
           }
         | CategoryGridBlock
         | ProductGridBlock
+        | AboutUsProductGridBlock
+        | BlogGridBlock
       )[]
     | null;
   id?: string | null;
@@ -1068,6 +1064,8 @@ export interface ContainerBlock {
           }
         | CategoryGridBlock
         | ProductGridBlock
+        | AboutUsProductGridBlock
+        | BlogGridBlock
       )[]
     | null;
   id?: string | null;
@@ -1106,6 +1104,47 @@ export interface ProductGridBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'productGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutUsProductGridBlock".
+ */
+export interface AboutUsProductGridBlock {
+  title: string;
+  description: string;
+  products?: (number | Product)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutUsProductGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogGridBlock".
+ */
+export interface BlogGridBlock {
+  blogs?: (number | Blog)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blogGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs".
+ */
+export interface Blog {
+  id: number;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  featuredImage: number | Media;
+  author: string;
+  publishDate: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1311,6 +1350,10 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
+        relationTo: 'blogs';
+        value: number | Blog;
+      } | null)
+    | ({
         relationTo: 'forms';
         value: number | Form;
       } | null)
@@ -1469,15 +1512,6 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                  };
               id?: T;
               blockName?: T;
             };
@@ -1509,6 +1543,8 @@ export interface PagesSelect<T extends boolean = true> {
             };
         categoryGrid?: T | CategoryGridBlockSelect<T>;
         productGrid?: T | ProductGridBlockSelect<T>;
+        aboutUsProductGrid?: T | AboutUsProductGridBlockSelect<T>;
+        blogGrid?: T | BlogGridBlockSelect<T>;
       };
   meta?:
     | T
@@ -1729,6 +1765,8 @@ export interface SectionBlockSelect<T extends boolean = true> {
             };
         categoryGrid?: T | CategoryGridBlockSelect<T>;
         productGrid?: T | ProductGridBlockSelect<T>;
+        aboutUsProductGrid?: T | AboutUsProductGridBlockSelect<T>;
+        blogGrid?: T | BlogGridBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1792,6 +1830,8 @@ export interface ContainerBlockSelect<T extends boolean = true> {
             };
         categoryGrid?: T | CategoryGridBlockSelect<T>;
         productGrid?: T | ProductGridBlockSelect<T>;
+        aboutUsProductGrid?: T | AboutUsProductGridBlockSelect<T>;
+        blogGrid?: T | BlogGridBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1828,6 +1868,26 @@ export interface ProductGridBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutUsProductGridBlock_select".
+ */
+export interface AboutUsProductGridBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  products?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogGridBlock_select".
+ */
+export interface BlogGridBlockSelect<T extends boolean = true> {
+  blogs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
@@ -1856,6 +1916,21 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs_select".
+ */
+export interface BlogsSelect<T extends boolean = true> {
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
+  featuredImage?: T;
+  author?: T;
+  publishDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

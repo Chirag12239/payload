@@ -20,6 +20,8 @@ import { AboutUsWithImage } from '@/blocks/AboutUsWithImage/config'
 import { BestService } from '@/blocks/BestService/config'
 import { CategoryGrid } from '@/blocks/CategoryGridBlock/config'
 import { ProductGrid } from '@/blocks/ProductGridBlock/config'
+import { AboutUsProductGrid } from '@/blocks/AboutUsProductGrid/config'
+import { BlogGrid } from '@/blocks/BlogGridBlock/config'
 
 import { hero } from '@/fields/hero'
 import { slugField } from 'payload'
@@ -117,6 +119,8 @@ export const Pages: CollectionConfig = {
                 BestService,
                 CategoryGrid,
                 ProductGrid,
+                AboutUsProductGrid,
+                BlogGrid,
               ],
               required: true,
             },

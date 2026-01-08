@@ -15,6 +15,8 @@ import { BestService } from '../BestService/config'
 
 import { CategoryGrid } from '../CategoryGridBlock/config'
 import { ProductGrid } from '../ProductGridBlock/config'
+import { AboutUsProductGrid } from '../AboutUsProductGrid/config'
+import { BlogGrid } from '../BlogGridBlock/config'
 import { colorPickerField } from '@/fields/ColorPicker/config'
 
 export const Container: Block = {
@@ -113,6 +115,8 @@ export const Container: Block = {
         BestService,
         CategoryGrid,
         ProductGrid,
+        AboutUsProductGrid,
+        BlogGrid,
 
         // Container // Self-reference might need careful handling, omitting for now to be safe.
       ],

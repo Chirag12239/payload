@@ -16,6 +16,8 @@ import { BestService } from '../BestService/config'
 
 import { CategoryGrid } from '../CategoryGridBlock/config'
 import { ProductGrid } from '../ProductGridBlock/config'
+import { AboutUsProductGrid } from '../AboutUsProductGrid/config'
+import { BlogGrid } from '../BlogGridBlock/config'
 import { colorPickerField } from '@/fields/ColorPicker/config'
 
 export const Section: Block = {
@@ -63,6 +65,8 @@ export const Section: Block = {
         BestService,
         CategoryGrid,
         ProductGrid,
+        AboutUsProductGrid,
+        BlogGrid,
       ],
     },
   ],

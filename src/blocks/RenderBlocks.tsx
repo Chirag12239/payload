@@ -17,6 +17,8 @@ import { ServiceDetailsBlock } from '@/blocks/ServiceDetails/Component'
 import { BestServiceBlock } from '@/blocks/BestService/Component'
 import { CategoryGridBlock } from '@/blocks/CategoryGridBlock/Component'
 import { ProductGridBlock } from '@/blocks/ProductGridBlock/Component'
+import { AboutUsProductGridBlock } from '@/blocks/AboutUsProductGrid/Component'
+import { BlogGridBlock } from '@/blocks/BlogGridBlock/Component'
 
 import { toKebabCase } from '@/utilities/toKebabCase'
 import React, { Fragment } from 'react'
@@ -43,6 +45,8 @@ const blockComponents = {
   bestService: BestServiceBlock,
   categoryGrid: CategoryGridBlock,
   productGrid: ProductGridBlock,
+  aboutUsProductGrid: AboutUsProductGridBlock,
+  blogGrid: BlogGridBlock,
 }
 
 export const RenderBlocks: React.FC<{
