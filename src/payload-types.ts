@@ -529,6 +529,8 @@ export interface Page {
         blockName?: string | null;
         blockType: 'bestService';
       }
+    | CategoryGridBlock
+    | ProductGridBlock
   )[];
   meta?: {
     title?: string | null;
@@ -643,6 +645,7 @@ export interface ArchiveBlock {
 export interface Category {
   id: number;
   title: string;
+  media?: (number | null) | Media;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -1000,6 +1003,8 @@ export interface SectionBlock {
             blockName?: string | null;
             blockType: 'bestService';
           }
+        | CategoryGridBlock
+        | ProductGridBlock
       )[]
     | null;
   id?: string | null;
@@ -1061,6 +1066,8 @@ export interface ContainerBlock {
             blockName?: string | null;
             blockType: 'bestService';
           }
+        | CategoryGridBlock
+        | ProductGridBlock
       )[]
     | null;
   id?: string | null;
@@ -1079,6 +1086,26 @@ export interface SeparatorBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'separator';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CategoryGridBlock".
+ */
+export interface CategoryGridBlock {
+  categories: (number | Category)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'categoryGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductGridBlock".
+ */
+export interface ProductGridBlock {
+  products?: (number | Product)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1480,6 +1507,8 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        categoryGrid?: T | CategoryGridBlockSelect<T>;
+        productGrid?: T | ProductGridBlockSelect<T>;
       };
   meta?:
     | T
@@ -1698,6 +1727,8 @@ export interface SectionBlockSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        categoryGrid?: T | CategoryGridBlockSelect<T>;
+        productGrid?: T | ProductGridBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1759,6 +1790,8 @@ export interface ContainerBlockSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        categoryGrid?: T | CategoryGridBlockSelect<T>;
+        productGrid?: T | ProductGridBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1777,10 +1810,29 @@ export interface SeparatorBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CategoryGridBlock_select".
+ */
+export interface CategoryGridBlockSelect<T extends boolean = true> {
+  categories?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductGridBlock_select".
+ */
+export interface ProductGridBlockSelect<T extends boolean = true> {
+  products?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
   title?: T;
+  media?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;
@@ -2254,6 +2306,7 @@ export interface Header {
  */
 export interface Footer {
   id: number;
+  footerTitle: string;
   navItems?:
     | {
         link?: {
@@ -2269,6 +2322,33 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  secondaryNavItems?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  contactInfo?: {
+    phone?: string | null;
+    email?: string | null;
+  };
+  socialLinks?:
+    | {
+        platform?: ('x' | 'instagram' | 'facebook') | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2321,6 +2401,7 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  footerTitle?: T;
   navItems?:
     | T
     | {
@@ -2335,6 +2416,34 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  secondaryNavItems?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  contactInfo?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  copyrightText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

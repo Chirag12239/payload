@@ -13,6 +13,10 @@ import React, { Suspense } from 'react'
 import { Button } from '@/components/ui/button'
 import { ChevronLeftIcon } from 'lucide-react'
 import { Metadata } from 'next'
+import { Grid } from '@/components/Grid'
+import { ProductGridItem } from '@/components/ProductGridItem'
+import './style.css'
+import ProductAssure from '@/components/ProductAssure'
 
 type Args = {
   params: Promise<{
@@ -117,15 +121,15 @@ export default async function ProductPage({ params }: Args) {
         }}
         type="application/ld+json"
       />
-      <div className="container pt-8 pb-8">
+      <div className="px-6 pt-8">
         <Button asChild variant="ghost" className="mb-4">
           <Link href="/shop">
             <ChevronLeftIcon />
             All products
           </Link>
         </Button>
-        <div className="flex flex-col gap-12 rounded-lg border p-8 md:py-12 lg:flex-row lg:gap-8 bg-primary-foreground">
-          <div className="h-full w-full basis-full lg:basis-1/2">
+        <div className="flex flex-col items-start gap-12 rounded-lg lg:flex-row lg:gap-8 bg-primary-foreground">
+          <div className="w-full basis-full lg:basis-1/2">
             <Suspense
               fallback={
                 <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
@@ -134,9 +138,13 @@ export default async function ProductPage({ params }: Args) {
               {Boolean(gallery?.length) && <Gallery gallery={gallery} />}
             </Suspense>
           </div>
-
-          <div className="basis-full lg:basis-1/2">
-            <ProductDescription product={product} />
+          <div className="flex flex-col gap-10 basis-full lg:basis-1/2 top-20 bg-[#f6f6f6] rounded-lg h-full">
+            <div>
+              <ProductDescription product={product} />
+            </div>
+            <div>
+              <ProductAssure />
+            </div>
           </div>
         </div>
       </div>
@@ -144,7 +152,7 @@ export default async function ProductPage({ params }: Args) {
       {product.layout?.length ? <RenderBlocks blocks={product.layout} /> : <></>}
 
       {relatedProducts.length ? (
-        <div className="container">
+        <div className="px-6 pb-8">
           <RelatedProducts products={relatedProducts as Product[]} />
         </div>
       ) : (
@@ -158,10 +166,24 @@ function RelatedProducts({ products }: { products: Product[] }) {
   if (!products.length) return null
 
   return (
-    <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">Related Products</h2>
+    <div className="">
+      {/* <h2 className="mb-4 text-2xl font-bold">Related Products</h2>  */}
+      <div
+        className="categories-heading-wrap"
+        data-w-id="8eab13c3-f1a6-0ac2-0b8f-02318542c686"
+        style={{
+          opacity: 1,
+          transform:
+            'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        <h2 className="h2" data-w-id="8eab13c3-f1a6-0ac2-0b8f-02318542c687" style={{ opacity: 1 }}>
+          Additional Products
+        </h2>
+      </div>
       <ul className="flex w-full gap-4 overflow-x-auto pt-1">
-        {products.map((product) => (
+        {/* {products.map((product) => (
           <li
             className="aspect-square w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
             key={product.id}
@@ -176,7 +198,14 @@ function RelatedProducts({ products }: { products: Product[] }) {
               />
             </Link>
           </li>
-        ))}
+          ))} */}
+        {products?.length > 0 ? (
+          <Grid className="grid grid-cols-1 h-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product) => {
+              return <ProductGridItem key={product.id} product={product} />
+            })}
+          </Grid>
+        ) : null}
       </ul>
     </div>
   )

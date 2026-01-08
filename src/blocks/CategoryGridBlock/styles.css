@@ -1,0 +1,28 @@
+/* Category Overlay Box */
+.category-overlay-box {
+  position: absolute;
+  inset: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-overlay-box:hover,
+.group:hover .category-overlay-box {
+  opacity: 1;
+}
+
+@media screen and (max-width: 991px) {
+  .category-overlay-box.mobile-hide {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .category-overlay-box.mobile-hide {
+    display: none;
+  }
+}

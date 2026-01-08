@@ -19,14 +19,17 @@ export const BestServiceBlock: React.FC<Props> = ({ leftImage, rightImage }) => 
   return (
     <section>
       <div>
-        <div className="service-layout grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="service-content-details-wrap md:sticky md:top-[30px] h-fit">
-            <div className="service-image-wrap big-image">
-              <Media resource={leftImage} className="service-image w-full h-auto object-cover" />
+        <div className="service-layout grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="service-content-details-wrap h-full flex flex-col">
+            <div className="service-image-wrap big-image rounded-[20px] overflow-hidden h-full flex-grow relative">
+              <Media
+                resource={leftImage}
+                className="service-image w-full h-full object-cover absolute inset-0"
+              />
             </div>
           </div>
 
-          <div className="service-details-right flex flex-col gap-4">
+          <div className="service-details-right h-full flex flex-col gap-4">
             <ServiceDetailsBlock
               title="Best services that we have"
               shopLink={{
@@ -35,9 +38,13 @@ export const BestServiceBlock: React.FC<Props> = ({ leftImage, rightImage }) => 
                 appearance: 'explore',
               }}
               services={servicesData}
+              className="flex-1"
             />
-            <div className="service-image-wrap mini-image">
-              <Media resource={rightImage} className="service-image mini-image w-full h-auto object-cover" />
+            <div className="service-image-wrap mini-image rounded-[20px] overflow-hidden">
+              <Media
+                resource={rightImage}
+                className="service-image mini-image w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>

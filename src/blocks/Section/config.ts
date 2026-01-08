@@ -14,6 +14,8 @@ import { Container } from '../Container/config'
 import { AboutUsWithImage } from '../AboutUsWithImage/config'
 import { BestService } from '../BestService/config'
 
+import { CategoryGrid } from '../CategoryGridBlock/config'
+import { ProductGrid } from '../ProductGridBlock/config'
 import { colorPickerField } from '@/fields/ColorPicker/config'
 
 export const Section: Block = {
@@ -59,7 +61,8 @@ export const Section: Block = {
         TwoimageSection,
         AboutUsWithImage,
         BestService,
-
+        CategoryGrid,
+        ProductGrid,
       ],
     },
   ],

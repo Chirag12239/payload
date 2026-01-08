@@ -13,6 +13,8 @@ import { Separator } from '../Separator/config'
 import { AboutUsWithImage } from '../AboutUsWithImage/config'
 import { BestService } from '../BestService/config'
 
+import { CategoryGrid } from '../CategoryGridBlock/config'
+import { ProductGrid } from '../ProductGridBlock/config'
 import { colorPickerField } from '@/fields/ColorPicker/config'
 
 export const Container: Block = {
@@ -109,6 +111,8 @@ export const Container: Block = {
         Separator,
         AboutUsWithImage,
         BestService,
+        CategoryGrid,
+        ProductGrid,
 
         // Container // Self-reference might need careful handling, omitting for now to be safe.
       ],

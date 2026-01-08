@@ -1,0 +1,15 @@
+.h2 {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 32px;
+}
+
+
+/* Variant 1 Styles */
+.categories-heading-wrap {
+  display: flex;
+  min-height: 120px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: var(--light-grey);
+}

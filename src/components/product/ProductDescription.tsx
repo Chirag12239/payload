@@ -52,28 +52,27 @@ export function ProductDescription({ product }: { product: Product }) {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-        <h1 className="text-2xl font-medium">{product.title}</h1>
-        <div className="uppercase font-mono">
+    <div className="flex flex-col gap-6 justify-center h-full px-10 py-20">
+      <div className="flex flex-col lg:justify-between gap-6">
+        <h1 className="text-4xl font-medium font-sans">{product.title}</h1>
+        {product.description ? (
+        <RichText className="text-lg font-sans" data={product.description} enableGutter={false} />
+      ) : null}
+        <div className="uppercase font-sans text-3xl flex">
           {hasVariants ? (
             <Price highestAmount={highestAmount} lowestAmount={lowestAmount} />
           ) : (
             <Price amount={amount} />
           )}
+          <span>&nbsp;USD</span>
         </div>
       </div>
-      {product.description ? (
-        <RichText className="" data={product.description} enableGutter={false} />
-      ) : null}
-      <hr />
+      
       {hasVariants && (
         <>
           <Suspense fallback={null}>
             <VariantSelector product={product} />
           </Suspense>
-
-          <hr />
         </>
       )}
       <div className="flex items-center justify-between">

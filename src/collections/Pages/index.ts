@@ -18,6 +18,8 @@ import { Separator } from '@/blocks/Separator/config'
 import { AboutUsDetails } from '@/blocks/AboutUsDetails/config'
 import { AboutUsWithImage } from '@/blocks/AboutUsWithImage/config'
 import { BestService } from '@/blocks/BestService/config'
+import { CategoryGrid } from '@/blocks/CategoryGridBlock/config'
+import { ProductGrid } from '@/blocks/ProductGridBlock/config'
 
 import { hero } from '@/fields/hero'
 import { slugField } from 'payload'
@@ -113,7 +115,8 @@ export const Pages: CollectionConfig = {
                 AboutUsDetails,
                 AboutUsWithImage,
                 BestService,
-
+                CategoryGrid,
+                ProductGrid,
               ],
               required: true,
             },
