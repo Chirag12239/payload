@@ -406,7 +406,7 @@ export interface CallToActionBlock {
   } | null;
   links?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
@@ -414,7 +414,7 @@ export interface CallToActionBlock {
             value: number | Page;
           } | null;
           url?: string | null;
-          label: string;
+          label?: string | null;
           /**
            * Choose how the link should be rendered.
            */
@@ -454,7 +454,7 @@ export interface Page {
     } | null;
     links?:
       | {
-          link: {
+          link?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
             reference?: {
@@ -462,7 +462,7 @@ export interface Page {
               value: number | Page;
             } | null;
             url?: string | null;
-            label: string;
+            label?: string | null;
             /**
              * Choose how the link should be rendered.
              */
@@ -487,6 +487,48 @@ export interface Page {
     | SectionBlock
     | ContainerBlock
     | SeparatorBlock
+    | {
+        title: string;
+        description: string;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'aboutUsDetails';
+      }
+    | {
+        title: string;
+        description: string;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label?: string | null;
+        };
+        image: number | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'aboutUsWithImage';
+      }
+    | {
+        leftImage: number | Media;
+        rightImage: number | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'bestService';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -537,7 +579,7 @@ export interface ContentBlock {
             value: number | Page;
           } | null;
           url?: string | null;
-          label: string;
+          label?: string | null;
           /**
            * Choose how the link should be rendered.
            */
@@ -906,6 +948,7 @@ export interface TwoimageSectionBlock {
 export interface BannerDeviderBlock {
   variant: 'categories' | 'discover';
   name: string;
+  buttonText?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'bannerDevider';
@@ -932,6 +975,31 @@ export interface SectionBlock {
         | MediaBlock
         | ThreeItemGridBlock
         | TwoimageSectionBlock
+        | {
+            title: string;
+            description: string;
+            link?: {
+              type?: ('reference' | 'custom') | null;
+              newTab?: boolean | null;
+              reference?: {
+                relationTo: 'pages';
+                value: number | Page;
+              } | null;
+              url?: string | null;
+              label?: string | null;
+            };
+            image: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'aboutUsWithImage';
+          }
+        | {
+            leftImage: number | Media;
+            rightImage: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'bestService';
+          }
       )[]
     | null;
   id?: string | null;
@@ -968,6 +1036,31 @@ export interface ContainerBlock {
         | ThreeItemGridBlock
         | TwoimageSectionBlock
         | SeparatorBlock
+        | {
+            title: string;
+            description: string;
+            link?: {
+              type?: ('reference' | 'custom') | null;
+              newTab?: boolean | null;
+              reference?: {
+                relationTo: 'pages';
+                value: number | Page;
+              } | null;
+              url?: string | null;
+              label?: string | null;
+            };
+            image: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'aboutUsWithImage';
+          }
+        | {
+            leftImage: number | Media;
+            rightImage: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'bestService';
+          }
       )[]
     | null;
   id?: string | null;
@@ -1344,6 +1437,49 @@ export interface PagesSelect<T extends boolean = true> {
         section?: T | SectionBlockSelect<T>;
         container?: T | ContainerBlockSelect<T>;
         separator?: T | SeparatorBlockSelect<T>;
+        aboutUsDetails?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        aboutUsWithImage?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        bestService?:
+          | T
+          | {
+              leftImage?: T;
+              rightImage?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1509,6 +1645,7 @@ export interface TwoimageSectionBlockSelect<T extends boolean = true> {
 export interface BannerDeviderBlockSelect<T extends boolean = true> {
   variant?: T;
   name?: T;
+  buttonText?: T;
   id?: T;
   blockName?: T;
 }
@@ -1535,6 +1672,32 @@ export interface SectionBlockSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         threeItemGrid?: T | ThreeItemGridBlockSelect<T>;
         twoimageSection?: T | TwoimageSectionBlockSelect<T>;
+        aboutUsWithImage?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        bestService?:
+          | T
+          | {
+              leftImage?: T;
+              rightImage?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   id?: T;
   blockName?: T;
@@ -1570,6 +1733,32 @@ export interface ContainerBlockSelect<T extends boolean = true> {
         threeItemGrid?: T | ThreeItemGridBlockSelect<T>;
         twoimageSection?: T | TwoimageSectionBlockSelect<T>;
         separator?: T | SeparatorBlockSelect<T>;
+        aboutUsWithImage?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        bestService?:
+          | T
+          | {
+              leftImage?: T;
+              rightImage?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   id?: T;
   blockName?: T;
@@ -2022,7 +2211,7 @@ export interface Header {
   logo: number | Media;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
@@ -2030,14 +2219,14 @@ export interface Header {
             value: number | Page;
           } | null;
           url?: string | null;
-          label: string;
+          label?: string | null;
         };
         columns?:
           | {
               title?: string | null;
               links?:
                 | {
-                    link: {
+                    link?: {
                       type?: ('reference' | 'custom') | null;
                       newTab?: boolean | null;
                       reference?: {
@@ -2045,7 +2234,7 @@ export interface Header {
                         value: number | Page;
                       } | null;
                       url?: string | null;
-                      label: string;
+                      label?: string | null;
                     };
                     id?: string | null;
                   }[]
@@ -2067,7 +2256,7 @@ export interface Footer {
   id: number;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
@@ -2075,7 +2264,7 @@ export interface Footer {
             value: number | Page;
           } | null;
           url?: string | null;
-          label: string;
+          label?: string | null;
         };
         id?: string | null;
       }[]

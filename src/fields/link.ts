@@ -2,7 +2,7 @@ import type { Field } from 'payload'
 
 import { deepMerge } from '@/utilities/deepMerge'
 
-export type LinkAppearances = 'default' | 'outline'
+export type LinkAppearances = 'default' | 'outline' | 'explore-black' | 'explore' | 'footer'
 
 export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
   default: {
@@ -12,6 +12,18 @@ export const appearanceOptions: Record<LinkAppearances, { label: string; value: 
   outline: {
     label: 'Outline',
     value: 'outline',
+  },
+  'explore-black': {
+    label: 'Explore Black',
+    value: 'explore-black',
+  },
+  explore: {
+    label: 'Explore',
+    value: 'explore',
+  },
+  footer: {
+    label: 'Footer',
+    value: 'footer',
   },
 }
 
@@ -110,7 +122,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
             width: '50%',
           },
           label: 'Label',
-          required: true,
+          required: false,
         },
       ],
     })

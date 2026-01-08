@@ -72,11 +72,12 @@
   --error: hsl(10, 93%, 70%);
 
   /* Custom Variables from User CSS */
-  --black: #0E1011;
+  --black: #0e1011;
   --white: #ffffff;
-  --light-grey: #F4F4F4;
-  --paragraph-color: #4A4A4A;
+  --light-grey: #f4f4f4;
+  --paragraph-color: #4a4a4a;
   --transparent: transparent;
+  --productbackground-color: #d7d7d7;
 }
 
 [data-theme='dark'] {
@@ -175,5 +176,3 @@ input,
 button {
   @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
 }
-
-
